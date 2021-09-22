@@ -3,9 +3,6 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 
-// Basic Configuration
-const port = process.env.PORT || 3000;
-
 app.use(cors());
 
 app.use('/public', express.static(`${process.cwd()}/public`));
@@ -71,6 +68,8 @@ app.get('/api/shorturl/:short_url?', async function(req, res){
   }
 })
 
-app.listen(port, function() {
-  console.log(`Listening on port ${port}`);
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Our app is running on port ${ PORT }`);
 });
+
